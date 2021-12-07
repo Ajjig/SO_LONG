@@ -1,0 +1,5 @@
+exe
+a.out
+*.o
+DS_Store
+so_long.a
