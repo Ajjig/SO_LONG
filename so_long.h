@@ -33,6 +33,7 @@
 # define NO_EXIT "Error: there is no exit item on the map\n"
 # define BIG_MAP "Error: the map is too big\n"
 # define EMPTY_MAP "\n\n\nMen niytek ????n\n\n\n\n"
+# define NO_BER "Error: not a '.ber' file"
 
 /*		STRUCTS		*/
 
