@@ -24,6 +24,16 @@
 # define WALL 49
 # define NAME "SO_LONG"
 
+/*		ERRORS		*/
+
+# define NO_MAP "Eroor: there is no map given\n"
+# define NOT_CLOSED "Error: the map is not closed\n"
+# define NO_PLAYER "Error: the map doesnt contain one player\n"
+# define NO_COLL "Error: there is no collictible item on the map\n"
+# define NO_EXIT "Error: there is no exit item on the map\n"
+# define BIG_MAP "Error: the map is too big\n"
+# define EMPTY_MAP "\n\n\nMen niytek ????n\n\n\n\n"
+
 /*		STRUCTS		*/
 
 typedef struct s_pos
