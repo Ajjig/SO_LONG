@@ -4,6 +4,8 @@ EXEC = a.out
 
 MAP = 1337.ber
 
+INC = so_long.h
+
 SRCS =	main.c \
 		map_checker.c \
 		get_player_next_pos.c \
@@ -25,7 +27,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INC)
 	$(CC) $(CFLAGS) $(MLX) $(OBJS)
 	ar rc $(NAME) $(OBJS)
 

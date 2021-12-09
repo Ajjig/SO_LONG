@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:02:30 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/07 03:09:11 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/09 04:48:00 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	parse_map(t_mlx *mlx)
 		{
 			if (mlx->map[y][x] == COLL)
 				ft_put_img(mlx, COLL, posx, posy);
-			posx += 100;
+			posx += ELEMENT_LEN;
 			x++;
 		}
-		posy += 100;
+		posy += ELEMENT_LEN;
 		y++;
 	}
 }
