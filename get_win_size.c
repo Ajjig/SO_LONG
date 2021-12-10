@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:18:56 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/07 03:18:57 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/10 02:19:32 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_pos	get_window_size(char **map)
 	len.x = ft_strlen(map[0]);
 	while (map[len.y] != NULL)
 		len.y++;
-	len.x *= 100;
-	len.y *= 100;
+	len.x *= ELEMENT_LEN;
+	len.y *= ELEMENT_LEN;
 	return (len);
 }

@@ -15,13 +15,15 @@
 # define MOVE_DOWN 1
 # define MOVE_RIGHT 2
 # define BUFFER_LEN 1024
+# define EXIT 69
 # define MOVE_UP 13
 # define EXIT_KEY 53
-# define ELEMENT_LEN 100
+# define ELEMENT_LEN 60
 # define PLAYER 80
 # define COLL 67
 # define EMPTY 48
 # define WALL 49
+# define SPEED 3
 # define NAME "SO_LONG"
 
 /*		ERRORS		*/
@@ -56,6 +58,7 @@ typedef struct s_mlx
 	void	*win;
 	void	*mlx;
 	char	**map;
+	int		count;
 }				t_mlx;
 
 t_pos	find_player(char **map);
