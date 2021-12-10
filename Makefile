@@ -28,18 +28,18 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INC)
-	$(CC) $(CFLAGS) $(MLX) $(OBJS)
-	ar rc $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(INC) $(MAP)
+	@$(CC) $(CFLAGS) $(MLX) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	-rm a.out
+	@-rm a.out
 
 run: all
-	./$(EXEC) $(MAP)
+	@./$(EXEC) $(MAP)
 
 re: fclean make
 
