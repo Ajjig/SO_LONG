@@ -15,7 +15,8 @@ SRCS =	main.c \
 		libft/ft_strlen.c\
 		libft/ft_split.c \
 		is_possible.c \
-		get_win_size.c
+		get_win_size.c \
+		kill_game.c
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
