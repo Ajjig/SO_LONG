@@ -62,6 +62,7 @@ typedef struct s_mlx
 }				t_mlx;
 
 t_pos	find_player(char **map);
+int	kill_game(t_mlx *mlx);
 t_pos	get_window_size(char **map);
 void	get_player_next_pos(int key, t_mlx *mlx, t_pos *pos);
 int		is_move_up(t_mlx *mlx);

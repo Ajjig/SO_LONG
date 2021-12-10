@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:34:38 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/10 02:49:31 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/10 04:28:49 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,12 @@ int	get_next_frame(t_mlx *mlx)
 
 int	key_read(int key, t_mlx *mlx)
 {
+	printf("\n\n%d\n\n", key);
 	if (key == MOVE_DOWN || key == MOVE_LEFT
 		|| key == MOVE_RIGHT || key == MOVE_UP)
 		get_player_next_pos(key, mlx, &(g_h.pos));
 	if (key == EXIT_KEY)
-	{
-		free(mlx->map);
-		free(mlx->win);
-		free(mlx->mlx);
-		exit(0);
-	}
+		kill_game(mlx);
 	return (0);
 }
 
@@ -110,5 +106,6 @@ int	main(int ac, char **av)
 	mlx.win = mlx_new_window(mlx.mlx, win_len.x, win_len.y, NAME);
 	mlx_loop_hook(mlx.mlx, &get_next_frame, &mlx);
 	mlx_key_hook(mlx.win, &key_read, &mlx);
+	mlx_hook(mlx.mlx, 17, (1L<<17), &kill_game, &mlx);
 	mlx_loop(mlx.mlx);
 }
