@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:19:50 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/10 00:59:05 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/10 23:53:12 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	move_up(t_mlx *mlx, t_pos *pos)
 	i = ELEMENT_LEN / SPEED;
 	while (i--)
 	{
-		pos->y -= SPEED;
 		between_move(mlx);
+		pos->y -= SPEED;
 	}
+	printf("Moves: %d\n", mlx->moves++);
 }
 
 void	move_down(t_mlx *mlx, t_pos *pos)
@@ -31,9 +32,10 @@ void	move_down(t_mlx *mlx, t_pos *pos)
 	i = ELEMENT_LEN / SPEED;
 	while (i--)
 	{
-		pos->y += SPEED;
 		between_move(mlx);
+		pos->y += SPEED;
 	}
+	printf("Moves: %d\n", mlx->moves++);
 }
 
 void	move_right(t_mlx *mlx, t_pos *pos)
@@ -43,9 +45,11 @@ void	move_right(t_mlx *mlx, t_pos *pos)
 	i = ELEMENT_LEN / SPEED;
 	while (i--)
 	{
-		pos->x += SPEED;
 		between_move(mlx);
+		pos->x += SPEED;
+
 	}
+	printf("Moves: %d\n", mlx->moves++);
 }
 
 void	move_left(t_mlx *mlx, t_pos *pos)
@@ -55,9 +59,10 @@ void	move_left(t_mlx *mlx, t_pos *pos)
 	i = ELEMENT_LEN / SPEED;
 	while (i--)
 	{
-		pos->x -= SPEED;
 		between_move(mlx);
+		pos->x -= SPEED;
 	}
+	printf("Moves: %d\n", mlx->moves++);
 }
 
 void	get_player_next_pos(int key, t_mlx *mlx, t_pos *pos)
@@ -70,5 +75,4 @@ void	get_player_next_pos(int key, t_mlx *mlx, t_pos *pos)
 		move_right(mlx, pos);
 	if (key == MOVE_LEFT && is_move_left(mlx))
 		move_left(mlx, pos);
-	parse_map(mlx);
 }

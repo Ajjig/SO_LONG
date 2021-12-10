@@ -14,6 +14,7 @@ SRCS =	main.c \
 		libft/ft_strdup.c\
 		libft/ft_strlen.c\
 		libft/ft_split.c \
+		libft/ft_itoa.c \
 		is_possible.c \
 		get_win_size.c \
 		kill_game.c

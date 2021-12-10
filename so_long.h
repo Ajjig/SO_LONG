@@ -18,7 +18,7 @@
 # define EXIT 69
 # define MOVE_UP 13
 # define EXIT_KEY 53
-# define ELEMENT_LEN 60
+# define ELEMENT_LEN 50
 # define PLAYER 80
 # define COLL 67
 # define EMPTY 48
@@ -34,8 +34,10 @@
 # define NO_COLL "Error: there is no collictible item on the map\n"
 # define NO_EXIT "Error: there is no exit item on the map\n"
 # define BIG_MAP "Error: the map is too big\n"
-# define EMPTY_MAP "\n\n\nMen niytek ????n\n\n\n\n"
+# define EMPTY_MAP "\n\n\nMen niytek ????\n\n\n\n"
 # define NO_BER "Error: not a '.ber' file"
+# define NO_RECTANGLE "Error: the map is not rectangle"
+# define NO_FILE "Error there is no valid file given\n"
 
 /*		STRUCTS		*/
 
@@ -59,10 +61,12 @@ typedef struct s_mlx
 	void	*mlx;
 	char	**map;
 	int		count;
+	int		moves;
 }				t_mlx;
 
 t_pos	find_player(char **map);
-int	kill_game(t_mlx *mlx);
+char	*ft_itoa(int n);
+int		kill_game(t_mlx *mlx);
 t_pos	get_window_size(char **map);
 void	get_player_next_pos(int key, t_mlx *mlx, t_pos *pos);
 int		is_move_up(t_mlx *mlx);
