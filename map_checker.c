@@ -6,56 +6,46 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:09:48 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/11 16:29:00 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:52:58 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static void	items_checker(char **map)
 {
 	static int	player_count = 0;
 	static int	exit_count = 0;
 	static int	coll_count = 0;
-	int			y;
-	int			x;
-	char		unk;
+	t_pos		pos;
 
-	y = -1;
-	while (map[++y])
+	pos.y = -1;
+	while (map[++pos.y])
 	{
-		x = -1;
-		while (map[y][++x])
+		pos.x = -1;
+		while (map[pos.y][++pos.x])
 		{
-			if (map[y][x] == PLAYER)
-				player_count++;
-			else if (map[y][x] == EXIT)
+			if (map[pos.y][pos.x] == PLAYER)
+				if (++player_count != 1)
+					ft_exit(NO_PLAYER);
+			if (map[pos.y][pos.x] == EXIT)
 				exit_count++;
-			else if (map[y][x] == COLL)
+			else if (map[pos.y][pos.x] == COLL)
 				coll_count++;
-			else if(map[y][x] != EMPTY && map[y][x] != WALL)
-				unk =x;
+			else if (map[pos.y][pos.x] != EMPTY && map[pos.y][pos.x] != WALL)
+				if (map[pos.y][pos.x] != PLAYER)
+					ft_exit(UNKNOWN_ELEMENT);
 		}
 	}
-	if (player_count != 1)
-		write(2, &NO_PLAYER, 42);
-	else if (coll_count == 0)
-		write(2, NO_COLL, 48);
-	else if (exit_count == 0)
-		write(2, NO_EXIT, 41);
-	else if (unk)
-		write(2, UNKNOWN_ELEMENT, 27);
-	else if (player_count != 1 || coll_count == 0 || exit_count == 0)
-		exit(0);
+	if (coll_count == 0 || exit_count == 0)
+		ft_exit(NO_COLL_EXIT);
 }
 
 static void	is_closed(char *line, int len)
 {
 	if (line[0] == WALL && line[len - 1] == WALL)
 		return ;
-	perror(NOT_CLOSED);
-	exit(0);
+	ft_exit(NOT_CLOSED);
 }
 
 static void	is_all_wall(char *line)
@@ -63,31 +53,27 @@ static void	is_all_wall(char *line)
 	while (*line)
 	{
 		if (*line != WALL)
-			perror(NOT_CLOSED);
+			ft_exit(NOT_CLOSED);
 		line++;
 	}
 }
 
-void check(char **map)
+void	check(char **map)
 {
 	int	len;
 	int	y;
 
 	y = -1;
 	len = ft_strlen(map[0]);
-	while(map[++y])
+	while (map[++y])
 		if (len != ft_strlen(map[y]))
-		{
-			perror(NO_RECTANGLE);
-			exit(1);
-		}
+			ft_exit(NO_RECTANGLE);
 	items_checker(map);
 	y = 0;
 	is_all_wall(map[y]);
 	while (map[++y])
 		is_closed(map[y], len);
 	is_all_wall(map[--y]);
-
 }
 
 int	map_checker(char *file, char ***map)
@@ -101,17 +87,11 @@ int	map_checker(char *file, char ***map)
 	big = (char *) malloc(BUFFER_LEN + 1);
 	nb = read(fd, big, BUFFER_LEN);
 	if (nb == -1)
-	{
-		perror(NO_FILE);
-		exit(0);
-	}
+		ft_exit(NO_FILE);
 	if (nb == BUFFER_LEN)
 		return (free(big), 0);
 	if (nb == 0 || nb == 1)
-	{
-		perror(EMPTY_MAP);
-		exit(0);
-	}
+		ft_exit(EMPTY_MAP);
 	if (nb < BUFFER_LEN)
 	{
 		big[nb] = 0;

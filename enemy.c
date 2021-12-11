@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 00:55:54 by majjig            #+#    #+#             */
+/*   Updated: 2021/12/12 00:57:07 by majjig           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_swap(char *c1, char *c2)
@@ -11,7 +23,7 @@ static int	left_right(t_mlx *mlx, int x, int y, char *where)
 	if (*where == 'R')
 	{
 		if (mlx->map[y + 1][x + 1] == PLAYER)
-				mlx_loop_hook(mlx->mlx, &lose_page, mlx);
+			mlx_loop_hook(mlx->mlx, &lose_page, mlx);
 		else if (mlx->map[y + 1][x + 1] != EMPTY)
 		{
 			*where = 'L';
@@ -21,7 +33,7 @@ static int	left_right(t_mlx *mlx, int x, int y, char *where)
 			return (ft_swap(&mlx->map[y][x], &mlx->map[y + 1][x + 1]), 0);
 	}
 	if (mlx->map[y - 1][x - 1] == PLAYER)
-			mlx_loop_hook(mlx->mlx, &lose_page, mlx);
+		mlx_loop_hook(mlx->mlx, &lose_page, mlx);
 	else if (mlx->map[y - 1][x - 1] != EMPTY)
 	{
 		*where = 'R';
@@ -30,6 +42,7 @@ static int	left_right(t_mlx *mlx, int x, int y, char *where)
 	ft_swap(&mlx->map[y][x], &mlx->map[y - 1][x - 1]);
 	return (0);
 }
+
 int	enemy_move(t_mlx *mlx)
 {
 	int			x;

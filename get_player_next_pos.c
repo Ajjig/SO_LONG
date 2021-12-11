@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:19:50 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/11 18:34:54 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:56:52 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	move_right(t_mlx *mlx, t_pos *pos)
 	{
 		between_move(mlx);
 		pos->x += SPEED;
-
 	}
 	printf("Moves: %d\n", mlx->moves++);
 }

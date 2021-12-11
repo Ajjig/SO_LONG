@@ -6,22 +6,19 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:34:38 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/11 19:20:52 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:24:24 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_item		g_h;
-
-char *g_h_img[21] = {"minato/0.xpm", "minato/1.xpm", "minato/2.xpm", "minato/3.xpm", "minato/4.xpm", "minato/5.xpm", "minato/6.xpm", "minato/7.xpm", "minato/8.xpm", "minato/9.xpm", "minato/10.xpm", "minato/11.xpm", "minato/12.xpm", "minato/13.xpm", "minato/14.xpm", "minato/15.xpm", "minato/16.xpm", "minato/17.xpm", "minato/18.xpm", "minato/19.xpm", "minato/20.xpm"};
-
 void	ft_put_img(t_mlx *mlx, char type, int x, int y)
 {
-	int			weight;
-	int			height;
+	int			w;
+	int			h;
 	char		*img;
-	char		*shuriken[8] = {"shur/s0.xpm", "shur/s1.xpm", "shur/s2.xpm", "shur/s3.xpm", "shur/s4.xpm", "shur/s5.xpm", "shur/s6.xpm", "shur/s7.xpm"};
+	const char	*shur[8] = {"shur/0.xpm", "shur/1.xpm", "shur/2.xpm",
+		"shur/3.xpm", "shur/4.xpm", "shur/5.xpm", "shur/6.xpm", "shur/7.xpm"};
 	static int	i = 0;
 
 	if (i == 8)
@@ -34,60 +31,60 @@ void	ft_put_img(t_mlx *mlx, char type, int x, int y)
 		img = "exit.xpm";
 	if (type == ENEMY)
 	{
-		img = mlx_xpm_file_to_image(mlx->mlx, shuriken[i++], &weight, &height);
+		img = mlx_xpm_file_to_image(mlx->mlx, (char *)shur[i++], &w, &h);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, img, x, y);
 		mlx_destroy_image(mlx->mlx, img);
 		return ;
 	}
-	img = mlx_xpm_file_to_image(mlx->mlx, img, &weight, &height);
+	img = mlx_xpm_file_to_image(mlx->mlx, img, &w, &h);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img, x, y);
 	mlx_destroy_image(mlx->mlx, img);
-
 }
 
 void	between_move(t_mlx *mlx)
 {
 	char	*img;
+	char	*win;
 
+	win = mlx->win;
 	img = "move.xpm";
-	img = mlx_xpm_file_to_image(mlx->mlx, img, &g_h.w, &g_h.h);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img, g_h.pos.x, g_h.pos.y);
+	img = mlx_xpm_file_to_image(mlx->mlx, img, &mlx->mi.w, &mlx->mi.h);
+	mlx_put_image_to_window(mlx->mlx, win, img, mlx->mi.pos.x, mlx->mi.pos.y);
 	mlx_destroy_image(mlx->mlx, img);
 }
 
 int	get_next_frame(t_mlx *mlx)
 {
-	int			img_width;
-	int			img_height;
-	char		*bg;
 	char		*img;
 	static int	i = 0;
-	char		*nb;
+	static char	*mi[21] = {"m/0.xpm", "m/1.xpm", "m/2.xpm", "m/3.xpm",
+		"m/4.xpm", "m/5.xpm", "m/6.xpm", "m/7.xpm", "m/8.xpm", "m/9.xpm",
+		"m/10.xpm", "m/11.xpm", "m/12.xpm", "m/13.xpm", "m/14.xpm", "m/15.xpm",
+		"m/16.xpm", "m/17.xpm", "m/18.xpm", "m/19.xpm", "m/20.xpm"};
 
 	if (i == 20)
 		i = 0;
 	enemy_pos(mlx);
-	g_h.pos = find_player(mlx->map);
-	g_h.pos.x *= ELEMENT_LEN;
-	g_h.pos.y *= ELEMENT_LEN;
-	bg = mlx_xpm_file_to_image(mlx->mlx, "BG.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, bg, 0, 0);
-	img = mlx_xpm_file_to_image(mlx->mlx, g_h_img[i++], &g_h.w, &g_h.h);
-	parse_map(mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img, g_h.pos.x, g_h.pos.y);
-	mlx_destroy_image(mlx->mlx, bg);
+	mlx->mi.pos = find_player(mlx->map);
+	mlx->mi.pos.x *= ELEMENT_LEN;
+	mlx->mi.pos.y *= ELEMENT_LEN;
+	img = mlx_xpm_file_to_image(mlx->mlx, "BG.xpm", &mlx->w, &mlx->h);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img, 0, 0);
 	mlx_destroy_image(mlx->mlx, img);
-	mlx_string_put(mlx->mlx, mlx->win, 10, 5, 0xFFFF00, "KUNSAI USED: ");
-	nb = ft_itoa(mlx->moves);
-	mlx_string_put(mlx->mlx, mlx->win, 140, 5, 0xFFFF00, nb);
-	return (free(nb), 0);
+	parse_map(mlx);
+	img = mlx_xpm_file_to_image(mlx->mlx, mi[i++], &mlx->mi.w, &mlx->mi.h);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img, mlx->mi.pos.x,
+		mlx->mi.pos.y);
+	mlx_destroy_image(mlx->mlx, img);
+	ft_put_moves(mlx);
+	return (0);
 }
 
 int	key_read(int key, t_mlx *mlx)
 {
 	if (key == MOVE_DOWN || key == MOVE_LEFT
 		|| key == MOVE_RIGHT || key == MOVE_UP)
-		get_player_next_pos(key, mlx, &(g_h.pos));
+		get_player_next_pos(key, mlx, &(mlx->mi.pos));
 	if (key == EXIT_KEY)
 		kill_game(mlx);
 	return (0);
@@ -100,11 +97,10 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (perror(NO_FILE), 1);
-	 if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
-	 	return (perror(NO_BER), 1);
+	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
+		return (perror(NO_BER), 1);
 	if (map_checker(av[1], &mlx.map) == 0)
 		return (perror(BIG_MAP), 1);
-
 	mlx.moves = 0;
 	win_len = get_window_size(mlx.map);
 	mlx.mlx = mlx_init();

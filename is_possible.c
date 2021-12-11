@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:19:14 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/11 18:41:02 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:54:30 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	is_move_down(t_mlx *mlx)
 			mlx->map[player.y][player.x] = EMPTY;
 			return (1);
 		}
-
 	}
 	return (0);
 }

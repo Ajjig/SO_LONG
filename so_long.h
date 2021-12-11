@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 00:53:29 by majjig            #+#    #+#             */
+/*   Updated: 2021/12/12 00:53:30 by majjig           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -29,17 +41,16 @@
 
 /*		ERRORS		*/
 
-# define NO_MAP "Eroor: there is no map given\n"
-# define NOT_CLOSED "Error: the map is not closed\n"
-# define NO_PLAYER "Error: the map doesnt contain one player\n"
-# define NO_COLL "Error: there is no collictible item on the map\n"
-# define NO_EXIT "Error: there is no exit item on the map\n"
-# define BIG_MAP "Error: the map is too big\n"
+# define NO_MAP "Eroor\n there is no map given\n"
+# define NOT_CLOSED "Error\n the map is not closed\n"
+# define NO_PLAYER "Error\n the map doesnt contain one player\n"
+# define NO_COLL_EXIT "Error\n there is no collictible or exit item on the map\n"
+# define BIG_MAP "Error\n the map is too big\n"
 # define EMPTY_MAP "\n\n\nMen niytek ????\n\n\n\n"
-# define NO_BER "Error: not a '.ber' file"
-# define NO_RECTANGLE "Error: the map is not rectangle"
-# define NO_FILE "Error there is no valid file given\n"
-# define UNKNOWN_ELEMENT "Error: unknown element ===>> "
+# define NO_BER "Error\n not a '.ber' file"
+# define NO_RECTANGLE "Error\n the map is not rectangle"
+# define NO_FILE "Error\n there is no valid file given\n"
+# define UNKNOWN_ELEMENT "Error\n unknown element ===>> "
 
 /*		STRUCTS		*/
 
@@ -52,7 +63,6 @@ typedef struct s_pos
 typedef struct s_item
 {
 	t_pos	pos;
-	char	*img;
 	int		w;
 	int		h;
 }				t_item;
@@ -64,6 +74,9 @@ typedef struct s_mlx
 	char	**map;
 	int		count;
 	int		moves;
+	t_item	mi;
+	int		h;
+	int		w;
 }				t_mlx;
 
 t_pos	find_player(char **map);
@@ -92,5 +105,7 @@ void	parse_map(t_mlx *mlx);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(char *src);
 int		ft_strlen(const char *str);
+void	ft_put_moves(t_mlx *mlx);
+void	ft_exit(char *msg);
 
 #endif

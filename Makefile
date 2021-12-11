@@ -21,7 +21,9 @@ SRCS =	main.c \
 		lose_page.c \
 		get_win_size.c \
 		kill_game.c \
-		enemy.c
+		enemy.c \
+		put_moves.c \
+		ft_exit.c
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
