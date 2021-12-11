@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:19:50 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/10 23:53:12 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/11 18:34:54 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	get_player_next_pos(int key, t_mlx *mlx, t_pos *pos)
 {
 	if (key == MOVE_UP && is_move_up(mlx))
 		move_up(mlx, pos);
-	if (key == MOVE_DOWN && is_move_down(mlx))
+	else if (key == MOVE_DOWN && is_move_down(mlx))
 		move_down(mlx, pos);
-	if (key == MOVE_RIGHT && is_move_right(mlx))
+	else if (key == MOVE_RIGHT && is_move_right(mlx))
 		move_right(mlx, pos);
-	if (key == MOVE_LEFT && is_move_left(mlx))
+	else if (key == MOVE_LEFT && is_move_left(mlx))
 		move_left(mlx, pos);
 }

@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:02:30 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/10 02:48:57 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/11 15:34:01 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse_map(t_mlx *mlx)
 		posx = 0;
 		while (mlx->map[y][x])
 		{
-			if (mlx->map[y][x] != EMPTY)
+			if (mlx->map[y][x] != EMPTY && mlx->map[y][x] != PLAYER)
 				ft_put_img(mlx, mlx->map[y][x], posx, posy);
 			if (mlx->map[y][x] == COLL)
 				mlx->count++;

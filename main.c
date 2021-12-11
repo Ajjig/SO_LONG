@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:34:38 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/11 00:19:43 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/11 19:20:52 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,34 @@ void	ft_put_img(t_mlx *mlx, char type, int x, int y)
 	int			weight;
 	int			height;
 	char		*img;
+	char		*shuriken[8] = {"shur/s0.xpm", "shur/s1.xpm", "shur/s2.xpm", "shur/s3.xpm", "shur/s4.xpm", "shur/s5.xpm", "shur/s6.xpm", "shur/s7.xpm"};
+	static int	i = 0;
 
-
+	if (i == 8)
+		i = 0;
 	if (type == COLL)
-	{
-		img = mlx_xpm_file_to_image(mlx->mlx, "coll.xpm", &weight, &height);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, img, x, y);
-		mlx_destroy_image(mlx->mlx, img);
-	}
+		img = "coll.xpm";
 	if (type == WALL)
-	{
-		img = mlx_xpm_file_to_image(mlx->mlx, "rock.xpm", &weight, &height);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, img, x, y);
-		mlx_destroy_image(mlx->mlx, img);
-	}
+		img = "rock.xpm";
 	if (type == EXIT)
+		img = "exit.xpm";
+	if (type == ENEMY)
 	{
-		img = mlx_xpm_file_to_image(mlx->mlx, "tree.xpm", &weight, &height);
+		img = mlx_xpm_file_to_image(mlx->mlx, shuriken[i++], &weight, &height);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, img, x, y);
 		mlx_destroy_image(mlx->mlx, img);
+		return ;
 	}
+	img = mlx_xpm_file_to_image(mlx->mlx, img, &weight, &height);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img, x, y);
+	mlx_destroy_image(mlx->mlx, img);
+
 }
 
 void	between_move(t_mlx *mlx)
 {
 	char	*img;
+
 	img = "move.xpm";
 	img = mlx_xpm_file_to_image(mlx->mlx, img, &g_h.w, &g_h.h);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img, g_h.pos.x, g_h.pos.y);
@@ -61,13 +64,13 @@ int	get_next_frame(t_mlx *mlx)
 	static int	i = 0;
 	char		*nb;
 
-	bg = "BG.xpm";
 	if (i == 20)
 		i = 0;
+	enemy_pos(mlx);
 	g_h.pos = find_player(mlx->map);
 	g_h.pos.x *= ELEMENT_LEN;
 	g_h.pos.y *= ELEMENT_LEN;
-	bg = mlx_xpm_file_to_image(mlx->mlx, bg, &img_width, &img_height);
+	bg = mlx_xpm_file_to_image(mlx->mlx, "BG.xpm", &img_width, &img_height);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, bg, 0, 0);
 	img = mlx_xpm_file_to_image(mlx->mlx, g_h_img[i++], &g_h.w, &g_h.h);
 	parse_map(mlx);
@@ -77,7 +80,6 @@ int	get_next_frame(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->win, 10, 5, 0xFFFF00, "KUNSAI USED: ");
 	nb = ft_itoa(mlx->moves);
 	mlx_string_put(mlx->mlx, mlx->win, 140, 5, 0xFFFF00, nb);
-
 	return (free(nb), 0);
 }
 
@@ -96,10 +98,13 @@ int	main(int ac, char **av)
 	t_mlx		mlx;
 	t_pos		win_len;
 
-	if (map_checker(av[1], &mlx.map) == 0)
-		return (perror(BIG_MAP), 1);
 	if (ac != 2)
 		return (perror(NO_FILE), 1);
+	 if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
+	 	return (perror(NO_BER), 1);
+	if (map_checker(av[1], &mlx.map) == 0)
+		return (perror(BIG_MAP), 1);
+
 	mlx.moves = 0;
 	win_len = get_window_size(mlx.map);
 	mlx.mlx = mlx_init();

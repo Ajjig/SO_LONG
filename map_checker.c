@@ -6,13 +6,12 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:09:48 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/10 22:07:18 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/11 16:29:00 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#include "so_long.h"
 
 static void	items_checker(char **map)
 {
@@ -21,31 +20,33 @@ static void	items_checker(char **map)
 	static int	coll_count = 0;
 	int			y;
 	int			x;
+	char		unk;
 
-	y = 0;
-	x = 0;
-	while (map[y])
+	y = -1;
+	while (map[++y])
 	{
-		x = 0;
-		while (map[y][x])
+		x = -1;
+		while (map[y][++x])
 		{
 			if (map[y][x] == PLAYER)
 				player_count++;
-			if (map[y][x] == EXIT)
+			else if (map[y][x] == EXIT)
 				exit_count++;
-			if (map[y][x] == COLL)
+			else if (map[y][x] == COLL)
 				coll_count++;
-			x++;
+			else if(map[y][x] != EMPTY && map[y][x] != WALL)
+				unk =x;
 		}
-		y++;
 	}
 	if (player_count != 1)
-		perror(NO_PLAYER);
-	if (coll_count == 0)
-		perror(NO_COLL);
-	if (exit_count == 0)
-		perror(NO_EXIT);
-	if (player_count != 1 || coll_count == 0 || exit_count == 0)
+		write(2, &NO_PLAYER, 42);
+	else if (coll_count == 0)
+		write(2, NO_COLL, 48);
+	else if (exit_count == 0)
+		write(2, NO_EXIT, 41);
+	else if (unk)
+		write(2, UNKNOWN_ELEMENT, 27);
+	else if (player_count != 1 || coll_count == 0 || exit_count == 0)
 		exit(0);
 }
 
@@ -80,7 +81,6 @@ void check(char **map)
 			perror(NO_RECTANGLE);
 			exit(1);
 		}
-
 	items_checker(map);
 	y = 0;
 	is_all_wall(map[y]);
@@ -100,11 +100,13 @@ int	map_checker(char *file, char ***map)
 	fd = open(file, O_RDONLY);
 	big = (char *) malloc(BUFFER_LEN + 1);
 	nb = read(fd, big, BUFFER_LEN);
-	if (nb == BUFFER_LEN)
+	if (nb == -1)
 	{
-		free(big);
-		return (0);
+		perror(NO_FILE);
+		exit(0);
 	}
+	if (nb == BUFFER_LEN)
+		return (free(big), 0);
 	if (nb == 0 || nb == 1)
 	{
 		perror(EMPTY_MAP);
@@ -119,6 +121,5 @@ int	map_checker(char *file, char ***map)
 	}
 	*map = ft_split(big, '\n');
 	check(*map);
-	free(big);
-	return (1);
+	return (free(big), 1);
 }

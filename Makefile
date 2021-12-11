@@ -11,13 +11,17 @@ SRCS =	main.c \
 		get_player_next_pos.c \
 		find_player.c \
 		parse.c \
-		libft/ft_strdup.c\
-		libft/ft_strlen.c\
+		libft/ft_strdup.c \
+		libft/ft_strlen.c \
+		libft/ft_strncmp.c \
 		libft/ft_split.c \
 		libft/ft_itoa.c \
 		is_possible.c \
+		win_page.c \
+		lose_page.c \
 		get_win_size.c \
-		kill_game.c
+		kill_game.c \
+		enemy.c
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 

@@ -14,7 +14,7 @@
 # define MOVE_LEFT 0
 # define MOVE_DOWN 1
 # define MOVE_RIGHT 2
-# define BUFFER_LEN 1024
+# define BUFFER_LEN 2048
 # define EXIT 69
 # define MOVE_UP 13
 # define EXIT_KEY 53
@@ -22,6 +22,7 @@
 # define PLAYER 80
 # define COLL 67
 # define EMPTY 48
+# define ENEMY 88
 # define WALL 49
 # define SPEED 3
 # define NAME "SO_LONG"
@@ -38,6 +39,7 @@
 # define NO_BER "Error: not a '.ber' file"
 # define NO_RECTANGLE "Error: the map is not rectangle"
 # define NO_FILE "Error there is no valid file given\n"
+# define UNKNOWN_ELEMENT "Error: unknown element ===>> "
 
 /*		STRUCTS		*/
 
@@ -65,11 +67,15 @@ typedef struct s_mlx
 }				t_mlx;
 
 t_pos	find_player(char **map);
+void	enemy_pos(t_mlx *mlx);
 char	*ft_itoa(int n);
 int		kill_game(t_mlx *mlx);
 t_pos	get_window_size(char **map);
+int		lose_page(t_mlx *mlx);
 void	get_player_next_pos(int key, t_mlx *mlx, t_pos *pos);
 int		is_move_up(t_mlx *mlx);
+int		win_page(t_mlx *mlx);
+int		ft_strncmp(char *s1, char *s2, int n);
 int		is_move_down(t_mlx *mlx);
 int		is_move_right(t_mlx *mlx);
 int		is_move_left(t_mlx *mlx);
