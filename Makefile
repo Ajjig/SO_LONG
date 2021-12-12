@@ -1,10 +1,11 @@
-NAME = so_long.a
 
 EXEC = a.out
+BEXEC = b.out
 
 MAP = map.ber
 
 INC = so_long.h
+INC_BNS = bonus/so_long.h
 
 SRCS =	main.c \
 		map_checker.c \
@@ -23,7 +24,30 @@ SRCS =	main.c \
 		kill_game.c \
 		enemy.c \
 		put_moves.c \
-		ft_exit.c
+		ft_exit.c \
+		check_spaces.c
+
+BNS =	bonus/map_checker_bonus.c \
+		bonus/get_player_next_pos_bonus.c \
+		bonus/find_player_bonus.c \
+		bonus/parse_bonus.c \
+		bonus/main_bonus.c \
+		libft/ft_strdup.c \
+		libft/ft_strlen.c \
+		libft/ft_strncmp.c \
+		libft/ft_split.c \
+		libft/ft_itoa.c \
+		bonus/is_possible_bonus.c \
+		bonus/win_page_bonus.c \
+		bonus/lose_page_bonus.c \
+		bonus/get_win_size_bonus.c \
+		bonus/kill_game_bonus.c \
+		bonus/enemy_bonus.c \
+		bonus/put_moves_bonus.c \
+		bonus/ft_exit_bonus.c \
+		bonus/check_spaces.c
+
+OBJBNS = ${BNS:.c=.o}
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
@@ -33,23 +57,25 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(EXEC)
 
-$(NAME): $(OBJS) $(INC)
+$(EXEC): $(OBJS) $(INC)
 	@$(CC) $(CFLAGS) $(MLX) $(OBJS)
-	@ar rc $(NAME) $(OBJS)
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(OBJBNS)
 
 fclean: clean
-	@-rm a.out
+	@-rm $(EXEC) $(BEXEC)
 
-bonus: all
+bonus: $(BEXEC)
+
+$(BEXEC): $(OBJBNS) $(INC_BNS)
+	@$(CC) $(CFLAGS) $(MLX) $(OBJBNS) -o $(BEXEC)
 
 run: all
 	@./$(EXEC) $(MAP)
 
-re: fclean make
+re: fclean all
 
 re-run: fclean run

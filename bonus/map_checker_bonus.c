@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 03:09:48 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/12 17:25:47 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:52:58 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ int	map_checker(char *file, char ***map)
 		free(big);
 		big = tmp;
 	}
-	check_spaces(big);
 	*map = ft_split(big, '\n');
 	check(*map);
 	return (free(big), 1);

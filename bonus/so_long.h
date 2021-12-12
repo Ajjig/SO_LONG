@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:53:29 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/12 17:25:03 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 17:25:20 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct s_mlx
 }				t_mlx;
 
 t_pos	find_player(char **map);
-void	check_spaces(char *str);
 void	enemy_pos(t_mlx *mlx);
+void	check_spaces(char *str);
 char	*ft_itoa(int n);
 int		kill_game(t_mlx *mlx);
 t_pos	get_window_size(char **map);
