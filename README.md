@@ -15,7 +15,8 @@ make bonus
 ```
 To play this game you can use any map of your choice as long follow the following rues:
 * A textfile with '.ber' extension.
-* Its must be rectangular, surrounded by wall 1.
+* It must be rectangular.
+* It must be surrounded by wall '1'.
 * Must have at least one exit, only one player and at least one collectible.
 
 |  Character  |          Object          |
