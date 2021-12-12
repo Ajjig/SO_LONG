@@ -2,8 +2,6 @@ NAME = so_long.a
 
 EXEC = a.out
 
-MAP = 1337.ber
-
 INC = so_long.h
 
 SRCS =	main.c \
@@ -35,7 +33,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INC) $(MAP)
+$(NAME): $(OBJS) $(INC)
 	@$(CC) $(CFLAGS) $(MLX) $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 
@@ -45,8 +43,10 @@ clean:
 fclean: clean
 	@-rm a.out
 
+bonus: all
+
 run: all
-	@./$(EXEC) $(MAP)
+	@./$(EXEC)
 
 re: fclean make
 
