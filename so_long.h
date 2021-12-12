@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 00:53:29 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/12 00:53:30 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:59:27 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define NO_BER "Error\n not a '.ber' file"
 # define NO_RECTANGLE "Error\n the map is not rectangle"
 # define NO_FILE "Error\n there is no valid file given\n"
-# define UNKNOWN_ELEMENT "Error\n unknown element ===>> "
+# define UNKNOWN_ELEMENT "Error\n unknown element\n"
 
 /*		STRUCTS		*/
 

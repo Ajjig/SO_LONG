@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:34:38 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/12 00:24:24 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 01:02:17 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int ac, char **av)
 	t_pos		win_len;
 
 	if (ac != 2)
-		return (perror(NO_FILE), 1);
+		ft_exit(NO_FILE);
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
 		return (perror(NO_BER), 1);
 	if (map_checker(av[1], &mlx.map) == 0)
