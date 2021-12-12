@@ -9,6 +9,10 @@ or
 make bonus
 ```
 # How-To-Play
+
+```Bash
+.exec /path/to/my_map.ber
+```
 To play this game you can use any map of your choice as long follow the following rues:
 * A textfile with '.ber' extension.
 * Its must be rectangular, surrounded by wall 1.
