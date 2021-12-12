@@ -2,11 +2,11 @@
 Description This project is a small 2D game that can read/parse any given map.
 # COMPILE
 ```Bash
-make
+cd path/to/SO_LONG && make
 ```
-or
+or for bonus part
 ```Bash
-make bonus
+cd path/to/SO_LONG && make bonus
 ```
 # How-To-Play
 
