@@ -2,6 +2,8 @@ NAME = so_long.a
 
 EXEC = a.out
 
+MAP = map.ber
+
 INC = so_long.h
 
 SRCS =	main.c \
@@ -46,7 +48,7 @@ fclean: clean
 bonus: all
 
 run: all
-	@./$(EXEC)
+	@./$(EXEC) $(MAP)
 
 re: fclean make
 

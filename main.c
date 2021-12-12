@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 00:34:38 by majjig            #+#    #+#             */
-/*   Updated: 2021/12/12 01:02:17 by majjig           ###   ########.fr       */
+/*   Updated: 2021/12/12 14:47:06 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ int	get_next_frame(t_mlx *mlx)
 {
 	char		*img;
 	static int	i = 0;
-	static char	*mi[21] = {"m/0.xpm", "m/1.xpm", "m/2.xpm", "m/3.xpm",
+	static char	*mi[31] = {"m/0.xpm", "m/1.xpm", "m/2.xpm", "m/3.xpm",
 		"m/4.xpm", "m/5.xpm", "m/6.xpm", "m/7.xpm", "m/8.xpm", "m/9.xpm",
 		"m/10.xpm", "m/11.xpm", "m/12.xpm", "m/13.xpm", "m/14.xpm", "m/15.xpm",
-		"m/16.xpm", "m/17.xpm", "m/18.xpm", "m/19.xpm", "m/20.xpm"};
+		"m/16.xpm", "m/17.xpm", "m/18.xpm", "m/19.xpm", "m/20.xpm", "m/21.xpm",
+		"m/22.xpm", "m/23.xpm", "m/24.xpm", "m/25.xpm", "m/26.xpm", "m/27.xpm",
+		"m/28.xpm", "m/29.xpm", "m/30.xpm"};
 
-	if (i == 20)
+	if (i == 31)
 		i = 0;
 	enemy_pos(mlx);
 	mlx->mi.pos = find_player(mlx->map);
