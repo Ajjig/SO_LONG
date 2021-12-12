@@ -2,7 +2,7 @@
 Description This project is a small 2D game that can read/parse any given map.
 # COMPILE
 ```Bash
-cd path/to/SO_LONG && make
+cd path/to/SO_LONG && make or make run
 ```
 or for bonus part
 ```Bash
