@@ -2,7 +2,7 @@
 Description This project is a small 2D game that can read/parse any given map.
 # COMPILE
 ```Bash
-cd path/to/SO_LONG && make or make run
+cd path/to/SO_LONG && make
 ```
 or for bonus part
 ```Bash
@@ -11,9 +11,11 @@ cd path/to/SO_LONG && make bonus
 # How-To-Play
 
 ```Bash
-.exec /path/to/my_map.ber
+./exec /path/to/my_map.ber
 ```
-To play this game you can use any map of your choice as long follow the following rues:
+
+#### You can use given maps or you can generate your own one respecting following rules.
+
 * A textfile with '.ber' extension.
 * It must be rectangular.
 * It must be surrounded by wall '1'.
