@@ -1,5 +1,5 @@
 # SO_LONG
-So_Long project is a 2D game builded with <MLX> that can read/parse any given map.
+So_Long project is a 2D game builded with \<MLX\> that can read/parse any given map.
 # COMPILE
 ```Bash
 cd path/to/SO_LONG && make
