@@ -4,7 +4,7 @@ So_Long project is a 2D game builded with \<MLX\> that can read/parse any given 
 ```Bash
 cd path/to/SO_LONG && make
 ```
-or for bonus part
+for bonus part:
 ```Bash
 cd path/to/SO_LONG && make bonus
 ```
