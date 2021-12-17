@@ -7,6 +7,7 @@ So_Long project is a 2D game builded with \<MLX\> that can read/parse any given 
 	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Ajjig/SO_LONG?color=blue" />
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Ajjig/SO_LONG?color=brightgreen" />
 </p>
+<img width="1859" alt="Screen Shot 2021-12-14 at 8 53 40 PM" src="https://user-images.githubusercontent.com/74059327/146507928-2f87bd86-dd32-4761-b141-b1252f14df31.png">
 
 # COMPILE
 ```Bash
