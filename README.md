@@ -1,5 +1,5 @@
 # SO_LONG
-So_Long project is a 2D game builded with \<MLX\> that can read/parse any given map.
+So_Long project is a 2D game builder with minilibx that can read/parse any given map.
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Ajjig/SO_LONG?color=blueviolet" />
 	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/Ajjig/SO_LONG?color=blueviolet" />
