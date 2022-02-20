@@ -1,6 +1,6 @@
 
-EXEC = a.out
-BEXEC = b.out
+EXEC = so_long
+BEXEC = so_long_bonus
 
 MAP = map.ber
 
