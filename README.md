@@ -37,6 +37,9 @@ cd path/to/SO_LONG && make bonus
 |     *C*     | collectible              |
 |     *E*     | exit                     |
 |     *P*     | Player starting position |
+
+**Be creative !!
+
 # Map-Examples
 ```
 111111111111111
