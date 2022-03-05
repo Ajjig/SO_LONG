@@ -23,7 +23,7 @@ cd path/to/SO_LONG && make bonus
 ./exec /path/to/my_map.ber
 ```
 
-#### You can use given maps or you can generate your own one respecting following rules.
+#### You can use given maps (.ber files) or you can generate your own one respecting following rules.
 
 * A textfile with '.ber' extension.
 * It must be rectangular.
